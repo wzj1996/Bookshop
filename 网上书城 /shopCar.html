@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/list.css">
+    <style>
+        #wrap img{
+            width: 50px;
+            height: 60px;
+        }
+        #wrap th{
+            vertical-align:middle;
+            text-align: center;
+        }
+        #wrap td{
+            vertical-align:middle;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div class="container">
+            <nav class="navbar navbar-inverse" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#example-navbar-collapse">
+                        <span class="sr-only">切换导航</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.php">书吧</a>
+                </div>
+                <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.php">网站首页</a></li>
+                        <li><a href="about.html">关于我们</a></li>
+                        <li><a href="list.html">图书展示</a></li>
+                        <li><a href="#">联系我们</a></li>
+                        <li class="active"><a href="shopCar.html">购物车</a></li>
+                        <li><a href="addBooks.html">添加图书</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div id="wrap">
+        <div class="container">
+            <div class="text-center">
+                <h2>购物车</h2>
+            </div>
+            <table class="table table-bordered" id="scc">
+                <tr>
+                    <th>图书</th>
+                    <th>书名</th>
+                    <th>数量</th>
+                    <th>单价</th>
+                    <th>结算</th>
+                    <th>删除</th>
+                </tr>
+                <!--<tr>-->
+                    <!--<td class="text-center"><img src="" alt=""></td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                    <!--<td><a href="">付款</a></td>-->
+                    <!--<td><a href="">删除</a></td>-->
+                <!--</tr>-->
+            </table>
+        </div>
+    </div>
+
+</body>
+<script>
+
+    $.ajax({
+        type:'post',
+        url:'ws.php',
+        aysnc:true,
+        dataType:'json',
+        success:function (data) {
+            console.log(data[0].price)
+           var html='';
+            for(var i=0;i<data.length;i++) {
+                html += "<tr id='tc'><td class='text-center'><img src='"+data[i].imgurl+"'></td><td id='name'>"+data[i].name+"</td><td>"+data[i].quantity+"</td><td>"+data[i].price+"</td><td><a href='#'>付款</a></td><td onclick='shanchu("+i+")'>删除</td></tr>";
+            }
+            $('#scc').append(html);
+        }
+    })
+    function shanchu(i) {
+        var a= $('.table #name').eq(i).html();//跟Js里的this.index差不多;
+        console.log(a);
+        $.ajax({
+           type:'post',
+            url:'shanchu.php',
+            aysnc:true,
+            dataType:'json',
+            data:{
+                name:a,
+            },
+            success:function (data) {
+               if(data.status==1){
+                   window.location.href='shopCar.html';
+               }
+            }
+        })
+    }
+
+</script>
+</html>

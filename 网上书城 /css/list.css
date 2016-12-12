@@ -1,0 +1,23 @@
+#wrap .panel{
+    padding: 10px;
+}
+#wrap a{
+    color: #333333;
+}
+#wrap .buy{
+    overflow: hidden;
+    padding: 0 10px;
+}
+#wrap .buy span{
+    float: left;
+    line-height: 34px;
+}
+#wrap .buy button{
+    float: right;
+}
+#wrap .buy .btn{
+    padding: 4px 8px;
+}
+#footer{
+    margin-top: 40px;
+}

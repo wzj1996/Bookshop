@@ -1,0 +1,41 @@
+body{
+    margin: 0;
+}
+#header{
+    position: relative;
+    width: 100%;
+    background-color: #222222;
+    height: 50px;
+    margin-bottom: 20px;
+    z-index: 999;
+}
+#header .navbar{
+    border: none;
+}
+#header .navbar-brand{
+    color: #9d9d9d;
+}
+#header .container{
+    padding: 0;
+}
+#wrap .jumbotron{
+    padding: 30px;
+}
+#wrap img{
+    width: 100%;
+}
+#wrap p{
+    font-size: 16px;
+}
+#wrap .jumbotron h1{
+    font-size: 48px;
+}
+.wzz{
+    display: none;
+}
+@media screen and (max-width: 992px){
+    #wrap .jumbotron h1 {
+        font-size: 28px;
+    }
+}
+

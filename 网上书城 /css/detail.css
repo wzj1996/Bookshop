@@ -1,0 +1,19 @@
+#wrap .panel-body{
+    padding: 5px 0;
+}
+#wrap .price{
+    color: red;
+    font-size: 48px;
+}
+#wrap .btn1{
+    float: left;
+    margin-left: 10px;
+}
+#wrap .btn1{
+    float: right;
+}
+#wrap .button{
+    margin-top: 40px;
+    overflow: hidden;
+    margin-right: 10px;
+}
